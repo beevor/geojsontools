@@ -174,11 +174,13 @@ def filter_by_property(input_file, output_file, property_name, values):
             filtered_feats.append(feat)
 
     feature_collection['features'] = filtered_feats
-
+    
+    # beevor: added feature_collection in call to dump()
+    
     # Save filtered file
     with open(output_file, 'wb') as f:
-        geojson.dump(f)
-
+        geojson.dump(feature_collection, f)
+    # end added
 
 def create_train_test(input_file, output_file=None, test_size=0.2):
     '''
